@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,9 +9,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, public menu: MenuController) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter(){
+    this.menu.swipeGesture(false);
+  }
+  
+  ionViewDidLeave(){
+    this.menu.swipeGesture(true);
   }
 
   login(){
